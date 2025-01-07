@@ -16,9 +16,9 @@ function M.retrieve(is_math)
   }) --[[@as function]]
 
   return {
-    with_priority({ trig = "arcsin", name = "arcsin" }, "\\arcsin "),
-    with_priority({ trig = "arctan", name = "arctan" }, "\\arctan "),
-    with_priority({ trig = "arcsec", name = "arcsec" }, "\\arcsec "),
+    with_priority({ trig = "arcsin", name = "arcsin" }, "\\arcsin"),
+    with_priority({ trig = "arctan", name = "arctan" }, "\\arctan"),
+    with_priority({ trig = "arcsec", name = "arcsec" }, "\\arcsec"),
     with_priority({ trig = "asin", name = "asin" }, "\\arcsin"),
     with_priority({ trig = "atan", name = "atan" }, "\\arctan"),
     with_priority({ trig = "asec", name = "asec" }, "\\arcsec"),

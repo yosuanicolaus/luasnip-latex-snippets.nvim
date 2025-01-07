@@ -22,11 +22,15 @@ function M.retrieve(not_math)
   return {
     s(
       { trig = "ali", name = "Align" },
-      { t({ "\\begin{align*}", "\t" }), i(1), t({ "", ".\\end{align*}" }) }
+      { t({ "\\begin{align*}", "\t" }), i(1), t({ "", "\\end{align*}" }) }
     ),
 
     parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$0\n\\end{$1}"),
     parse_snippet({ trig = "case", name = "cases" }, "\\begin{cases}\n\t$1\n\\end{cases}"),
+    parse_snippet(
+      { trig = "cases" },
+      "\\begin{cases}\n\t${1:case_1} & ${2:cond_1} \\\\\\ \n\t${3:case_2} & ${4:cond_2} \\\\\\ \n\\end{cases}"
+    ),
 
     s({ trig = "bigfun", name = "Big function" }, {
       t({ "\\begin{align*}", "\t" }),
@@ -45,7 +49,7 @@ function M.retrieve(not_math)
       t(")"),
       t(" = "),
       i(0),
-      t({ "", ".\\end{align*}" }),
+      t({ "", "\\end{align*}" }),
     }),
   }
 end
