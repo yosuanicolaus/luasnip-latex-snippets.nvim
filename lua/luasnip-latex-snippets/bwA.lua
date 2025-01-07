@@ -26,8 +26,9 @@ function M.retrieve(not_math)
     ),
 
     parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$0\n\\end{$1}"),
-    parse_snippet({ trig = "case", name = "cases" }, "\\begin{cases}\n\t$1\n\\end{cases}"),
-    parse_snippet(
+
+    -- no special condition
+    ls.parser.parse_snippet(
       { trig = "cases" },
       "\\begin{cases}\n\t${1:case_1} & ${2:cond_1} \\\\\\ \n\t${3:case_2} & ${4:cond_2} \\\\\\ \n\\end{cases}"
     ),
