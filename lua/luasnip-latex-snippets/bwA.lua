@@ -9,7 +9,7 @@ local function template_string(file_path)
   local maketitle_str = "\\maketitle\n"
 
   if file_path == "/template/tma_natural.tex" then
-    title_str = "\\chead{${1:Reading Notes}}\n"
+    title_str = "\\chead{${1:M140-02-Prices}}\n"
     maketitle_str = ""
   end
 
