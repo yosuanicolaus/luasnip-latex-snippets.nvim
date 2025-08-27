@@ -4,29 +4,6 @@ local i = ls.insert_node
 
 local M = {}
 
-local function template_string(file_path)
-  local title_str = "\\title{${1:Reading Notes}}\n"
-  local maketitle_str = "\\maketitle\n"
-
-  if file_path == "/template/tma_natural.tex" then
-    title_str = "\\chead{${1:M140-02-Prices}}\n"
-    maketitle_str = ""
-  end
-
-  return "\\documentclass[a4paper,12pt]{article}\n"
-    .. "\\input{"
-    .. vim.fn.getcwd()
-    .. file_path
-    .. "}\n"
-    .. title_str
-    .. "\\date{"
-    .. os.date("%Y-%m-%d")
-    .. "}\n"
-    .. "\\begin{document}\n"
-    .. maketitle_str
-    .. "\n${2:Hello, world!}\n\n\\end{document}"
-end
-
 function M.retrieve(not_math)
   local utils = require("luasnip-latex-snippets.util.utils")
   local pipe = utils.pipe
@@ -57,19 +34,6 @@ function M.retrieve(not_math)
     ),
 
     parse_snippet({ trig = "hr", name = "line break" }, "\\noindent\\rule{\\textwidth}{1pt}\n$1"),
-
-    parse_snippet(
-      { trig = "tempd", name = "template default.tex" },
-      template_string("/template/default.tex")
-    ),
-    parse_snippet(
-      { trig = "temptma", name = "template real TMA" },
-      template_string("/template/tma_real.tex")
-    ),
-    parse_snippet(
-      { trig = "templ", name = "template natural" },
-      template_string("/template/tma_natural.tex")
-    ),
 
     s({ trig = "bigfun", name = "Big function" }, {
       t({ "\\begin{align*}", "\t" }),
